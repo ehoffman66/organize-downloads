@@ -5,15 +5,17 @@ _author_ = Erik Hoffman
 '''
 
 import os
+import shutil
 
 user = input("Enter username: ")
+
 img = [".img",".png",".jpg"]
 doc = [".xls",".xlsx",".doc",".docx"]
 
 def check_path(file_path):
     '''Check to see if path exists'''
     print(file_path)
-    return os.path.isfile(path)
+    return os.path.exists(path)
 
 path = "/Users/" + user +  "/Downloads/"
 if check_path(path):
@@ -22,6 +24,9 @@ if check_path(path):
     split = os.path.splitext(file)
     if split[1] != "":
       if split[1] in img:
-        print("FOUND!")
+        print("Image")
+        shutil.move(path + file, path + "images/")
+      elif split[1] in doc:
+        print("Doc")
 else:
     print("Please put in a valid user")
