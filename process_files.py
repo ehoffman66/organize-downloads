@@ -9,24 +9,29 @@ import shutil
 
 user = input("Enter username: ")
 
-img = [".img",".png",".jpg"]
-doc = [".xls",".xlsx",".doc",".docx"]
+file_types = ["img","doc"]
+img = [".img",".png",".jpg",".gif",".psd",".raw"]
+doc = [".xls",".xlsx",".doc",".docx",".txt","pdf"]
 
 def check_path(file_path):
     '''Check to see if path exists'''
     print(file_path)
-    return os.path.exists(path)
+    return os.path.exists(file_path)
 
 path = "/Users/" + user +  "/Downloads/"
+for types in file_types:
+    if not check_path(path + types + "/"):
+        os.mkdir(path + types + "/")
+
 if check_path(path):
   files = os.listdir(path)
   for file in files:
     split = os.path.splitext(file)
     if split[1] != "":
-      if split[1] in img:
-        print("Image")
-        shutil.move(path + file, path + "images/")
-      elif split[1] in doc:
-        print("Doc")
+      for ftype in file_types:
+        print(ftype)
+        if split[1] in eval(ftype):
+          print("Image")
+          shutil.move(path + file, path + ftype + "/")
 else:
     print("Please put in a valid user")
