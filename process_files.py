@@ -1,11 +1,17 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+"""
+A quick python program for parsing the contents of a users downloads
+folder and sorting them into folders by type.
+"""
 
-'''
-_author_ = Erik Hoffman
-'''
+__author__ = "Erik Hoffman"
+__contact__ = "erik.m.hoffman@gmail.com"
+__date__ = "2021/11/09"
+__deprecated__ = False
 
 import os
 import shutil
+from ast import literal_eval
 
 user = input("Enter username: ")
 
@@ -30,7 +36,7 @@ if check_path(path):
     if split[1] != "":
       for ftype in file_types:
         print(ftype)
-        if split[1] in eval(ftype):
+        if split[1] in literal_eval(ftype):
           print("Image")
           shutil.move(path + file, path + ftype + "/")
 else:
