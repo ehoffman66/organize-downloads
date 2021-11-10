@@ -11,13 +11,15 @@ __deprecated__ = False
 
 import os
 import shutil
-from ast import literal_eval
+import sys
 
-user = input("Enter username: ")
+user = sys.argv[1]
 
-file_types = ["img","doc"]
+file_types = ["img","doc","remove","zip"]
 img = [".img",".png",".jpg",".gif",".psd",".raw"]
-doc = [".xls",".xlsx",".doc",".docx",".txt","pdf"]
+doc = [".xls",".xlsx",".doc",".docx",".txt",".pdf",".json"]
+zip = [".zip"]
+remove = [".dmg",".exe"]
 
 def check_path(file_path):
     '''Check to see if path exists'''
@@ -35,9 +37,7 @@ if check_path(path):
     split = os.path.splitext(file)
     if split[1] != "":
       for ftype in file_types:
-        print(ftype)
-        if split[1] in literal_eval(ftype):
-          print("Image")
+        if split[1] in eval(ftype):
           shutil.move(path + file, path + ftype + "/")
 else:
     print("Please put in a valid user")
