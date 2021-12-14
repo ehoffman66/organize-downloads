@@ -13,13 +13,17 @@ import os
 import shutil
 import sys
 
-user = sys.argv[1]
+if len(sys.argv) == 2:
+    user = sys.argv[1]
+else:
+    print("Please Enter a User")
+    quit()
 
 file_types = ["img","doc","remove","comp"]
 img = [".img",".png",".jpg",".gif",".psd",".raw"]
 doc = [".xls",".xlsx",".doc",".docx",".txt",".pdf",".json"]
 comp = [".zip"]
-remove = [".dmg",".exe",".pkg"]
+remove = [".dmg",".exe"]
 path = "/Users/" + user +  "/Downloads/"
 
 def check_path(file_path):
