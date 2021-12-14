@@ -19,7 +19,7 @@ file_types = ["img","doc","remove","comp"]
 img = [".img",".png",".jpg",".gif",".psd",".raw"]
 doc = [".xls",".xlsx",".doc",".docx",".txt",".pdf",".json"]
 comp = [".zip"]
-remove = [".dmg",".exe"]
+remove = [".dmg",".exe",".pkg"]
 path = "/Users/" + user +  "/Downloads/"
 
 def check_path(file_path):
