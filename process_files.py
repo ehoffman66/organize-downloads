@@ -20,7 +20,7 @@ else:
     quit()
 
 file_types = ["img","doc","remove","comp"]
-img = [".img",".png",".jpg",".gif",".psd",".raw"]
+img = [".img",".png",".jpg","jpeg",".gif",".psd",".raw"]
 doc = [".xls",".xlsx",".doc",".docx",".txt",".pdf",".json"]
 comp = [".zip"]
 remove = [".dmg",".exe"]
@@ -41,6 +41,7 @@ def move_files():
     if check_path(path):
         files = os.listdir(path)
         for file in files:
+            print(file)
             split = os.path.splitext(file)
             if split[1] != "":
                 for ftype in file_types:
