@@ -9,9 +9,11 @@ __contact__ = "erik.m.hoffman@gmail.com"
 __date__ = "2021/11/09"
 __deprecated__ = False
 
-import os
+import os, time
 import shutil
 import sys
+import datetime
+from venv import create
 
 if len(sys.argv) == 2:
     user = sys.argv[1]
@@ -33,7 +35,10 @@ def check_path(file_path):
 def create_dir():
     """Create missing directories"""
     for types in file_types:
+        if types == "remove":
+            continue
         if not check_path(path + types + "/"):
+            print(types)
             os.mkdir(path + types + "/")
 
 def move_files():
@@ -41,11 +46,22 @@ def move_files():
     if check_path(path):
         files = os.listdir(path)
         for file in files:
-            print(file)
+            create_date = os.path.getctime(path)
+            create_date = datetime.datetime.fromtimestamp(create_date)
+            current_date = datetime.datetime.now()
+            print(create_date.date())
+            if current_date.date() > create_date.date():
+                print(file)
+                print(current_date.date())
+                print(create_date.date())
+                print("Delete")
+                #os.remove(path + file)
             split = os.path.splitext(file)
             if split[1] != "":
                 for ftype in file_types:
                     if split[1] in eval(ftype):
+                        if ftype == "remove":
+                            continue
                         shutil.move(path + file, path + ftype + "/")
     else:
         print("Please put in a valid user")
