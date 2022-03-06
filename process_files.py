@@ -22,7 +22,7 @@ else:
     quit()
 
 file_types = ["img","doc","remove","comp"]
-img = [".img",".png",".jpg","jpeg",".gif",".psd",".raw"]
+img = [".img",".png",".jpg",".jpeg",".gif",".psd",".raw"]
 doc = [".xls",".xlsx",".doc",".docx",".txt",".pdf",".json"]
 comp = [".zip"]
 remove = [".dmg",".exe"]
