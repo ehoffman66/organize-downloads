@@ -47,17 +47,16 @@ def move_files():
     if check_path(path):
         files = os.listdir(path)
         for file in files:
-            create_date = os.path.getctime(path)
+            split = os.path.splitext(file)
+            create_date = os.path.getmtime(path + file)
             create_date = datetime.datetime.fromtimestamp(create_date)
             current_date = datetime.datetime.now()
-            print(create_date.date())
-            if current_date.date() > create_date.date():
+            if current_date.date() > create_date.date() and split[1] in remove:
                 print(file)
                 print(current_date.date())
                 print(create_date.date())
                 print("Delete")
-                #os.remove(path + file)
-            split = os.path.splitext(file)
+                os.remove(path + file)
             if split[1] != "":
                 for ftype in file_types:
                     if split[1] in eval(ftype):
