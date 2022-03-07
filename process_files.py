@@ -23,7 +23,8 @@ else:
 
 file_types = ["img","doc","remove","comp"]
 img = [".img",".png",".jpg",".jpeg",".gif",".psd",".raw"]
-doc = [".xls",".xlsx",".doc",".docx",".txt",".pdf",".json"]
+doc = [".xls",".xlsx",".doc",".docx",".txt",".pdf"]
+data = [".json",".csv"]
 comp = [".zip"]
 remove = [".dmg",".exe"]
 path = "/Users/" + user +  "/Downloads/"
