@@ -21,7 +21,7 @@ else:
     print("Please Enter a User")
     quit()
 
-file_types = ["img","doc","remove","comp"]
+file_types = ["img","doc","remove","comp","data"]
 img = [".img",".png",".jpg",".jpeg",".gif",".psd",".raw"]
 doc = [".xls",".xlsx",".doc",".docx",".txt",".pdf"]
 data = [".json",".csv"]
