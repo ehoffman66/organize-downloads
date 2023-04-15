@@ -52,10 +52,8 @@ def move_files():
             create_date = datetime.datetime.fromtimestamp(create_date)
             current_date = datetime.datetime.now()
             if current_date.date() > create_date.date() and split[1] in remove:
-                print(file)
-                print(current_date.date())
+                print("File Removed: " + file)
                 print(create_date.date())
-                print("Delete")
                 os.remove(path + file)
             if split[1] != "":
                 for ftype in file_types:
